@@ -1,0 +1,17 @@
+# URL REWRITING => REECRITURE D'URL
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+# IL FAUDRA LE CHANGER A CHAQUE NOUVEAU PROJET
+RewriteBase /abaglin/
+# SI LE FICHIER DEMANDE EST index.php
+# ALORS ON L'UTILISE
+RewriteRule ^index\.php$ - [L]
+# SI L'URL N'EST NI UN FICHIER
+# NI UN DOSSIER
+# ALORS IL FAUT DELEGUER LA CREATION DE LA PAGE A index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . ./index.php [L]
+</IfModule>
+# END WordPress
